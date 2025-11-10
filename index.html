@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regent Studios | Creadores de Experiencias</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    
+    <div class="intro-screen">
+        <img src="LogoBanerF.png" alt="Fondo del Logobanner de Regent Studios" class="intro-background-img"> 
+        
+        <div class="intro-title">
+            <img src="LogoM-removebg-preview.png" alt="Regent Studios Logo" class="intro-logo">
+        </div>
+
+        <div class="scroll-indicator" aria-hidden="false">
+            <svg class="scroll-arrow arrow-1" viewBox="0 0 24 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Desliza hacia abajo">
+                <path d="M3 8l9 9 9-9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+            </svg>
+            <svg class="scroll-arrow arrow-2" viewBox="0 0 24 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Desliza hacia abajo">
+                <path d="M3 8l9 9 9-9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+            </svg>
+            <svg class="scroll-arrow arrow-3" viewBox="0 0 24 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Desliza hacia abajo">
+                <path d="M3 8l9 9 9-9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+            </svg>
+            <span class="sr-only">Desliza hacia abajo</span>
+        </div>
+    </div>
+
+    <main>
+        <header class="header"></header>
+
+        <div class="container">
+            <div class="main-content">
+                
+                <div class="mission-vision-container">
+                    
+                    <div class="mission-vision-item">
+                        <h2 class="section-title">Nuestra Misión</h2>
+                        <p class="project-description">
+                            Somos <strong>Regent Studios</strong>, creadores de experiencias interactivas y visuales. Estudio independiente enfocado en animaciones, cortometrajes y videojuegos. Fusionamos <strong>arte, tecnología y narrativa</strong> para dar vida a ideas únicas.
+                        </p>
+                    </div>
+
+                    <div class="mission-vision-item">
+                        <h2 class="section-title">Nuestra Visión</h2>
+                        <p class="project-description">
+                            Ser el estudio de desarrollo independiente líder en Latinoamérica, reconocido por su innovación en la inmersión digital y por establecer nuevos estándares en el entretenimiento educativo y el storytelling interactivo.
+                        </p>
+                    </div>
+
+                </div>
+                
+                <h2 class="section-title">Proyectos Destacados</h2>
+                
+                <div class="project-card project-card-img"> 
+                    <h3>INSTPECAM 3D</h3>
+                    <p>Simulador inmersivo del Instituto Técnico Industrial "Pedro Castro Monsalvo", utilizando Blender, Sketchup y Unity. Un proyecto de grado que construye una réplica digital fiel y detallada.</p>
+                    
+                    <a href="https://regentstudios.github.io/Proyecto-Instpecam3D/" class="card-link" aria-label="Ir al Proyecto Instpecam 3D"></a>
+                    <span class="card-cta-label">Ver Proyecto</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p><strong>Regent Studios</strong> | Innovación y Creatividad</p>
+            <p>© 2025 Regent Studios | Todos los derechos reservados</p>
+            <p>Email: contacto@regentstudios.com | Teléfono: +123 456 7890</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Efecto de fade-out de la intro al hacer scroll
+        const introScreen = document.querySelector('.intro-screen');
+        const scrollThreshold = window.innerHeight;
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            
+            if (scrollY <= scrollThreshold) {
+                const opacity = 1 - (scrollY / scrollThreshold);
+                const blur = (scrollY / scrollThreshold) * 10;
+                introScreen.style.opacity = opacity;
+                introScreen.style.filter = `blur(${blur}px)`;
+            } else {
+                introScreen.style.opacity = 0;
+                introScreen.style.filter = `blur(10px)`;
+            }
+        }, { passive: true });
+
+        // Activar indicador de scroll si el usuario permanece en la intro sin desplazarse
+        (function() {
+            const indicator = document.querySelector('.scroll-indicator');
+            if (!indicator) return;
+
+            let idleTimer = null;
+            const idleDelay = 2500; // 2.5 segundos de inactividad
+            const isInIntro = () => window.scrollY <= window.innerHeight * 0.15;
+
+            function startIdle() {
+                clearTimeout(idleTimer);
+                idleTimer = setTimeout(() => {
+                    indicator.classList.add('active');
+                }, idleDelay);
+            }
+
+            function cancelIdle() {
+                clearTimeout(idleTimer);
+                indicator.classList.remove('active');
+            }
+
+            function handleScroll() {
+                if (isInIntro()) {
+                    cancelIdle();
+                    startIdle();
+                } else {
+                    cancelIdle();
+                }
+            }
+
+            window.addEventListener('load', () => {
+                if (isInIntro()) startIdle();
+            });
+
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible' && isInIntro()) startIdle();
+                else cancelIdle();
+            });
+
+            ['keydown','pointerdown','touchstart'].forEach(ev => {
+                window.addEventListener(ev, () => {
+                    cancelIdle();
+                }, { passive: true });
+            });
+        })();
+    </script>
+
+</body>
+</html>
