@@ -1,18 +1,18 @@
-/* --- Variables de Color y Estilos Generales (Mantenido) --- */
+/* --- Variables de Color y Estilos Generales --- */
 :root {
-    --primary-color: #212529; /* Gris muy oscuro */
-    --secondary-color: #4CAF50; /* Verde principal */
-    --accent-color: #8BC34A; /* Verde claro de acento */
-    --light-color: #f8f9fa; /* Blanco/gris claro */
-    --dark-color: #343a40; /* Gris oscuro para tarjetas */
-    --text-color: #e9ecef; /* Color de texto principal */
+    /* Paleta de Colores Azules/Cian Futurista */
+    --primary-color: #05050A; /* Negro ultra-oscuro (Fondo base) */
+    --secondary-color: #00BCD4; /* Cian primario (Bordes/Destacado/Neo) */
+    --accent-color: #4DD0E1; /* Cian claro de acento (Brillo/Hover) */
+    --light-color: #E0F7FA; /* Blanco/gris azulado claro */
+    --dark-color: #101018; /* Gris muy oscuro para secciones */
+    --text-color: #B3E5FC; /* Color de texto principal (Azul claro suave) */
+    
+    /* Gradiente sutil para el fondo */
+    --background-gradient: radial-gradient(circle at center, var(--dark-color) 0%, var(--primary-color) 100%);
 
-    /* Nuevos colores para rangos */
-    --rank-gold: #FFD700;
-    --rank-blue-bright: #29B6F6; /* Azul brillante más claro */
-    --rank-blue-normal: #1565C0; /* Azul normal más oscuro */
-    --rank-purple: #9370DB; /* Púrpura para el equipo de programación/assets */
-    --rank-purple-bright: #BF55EC; /* Púrpura brillante para el líder de equipo */
+    /* Sombra de Neo (para títulos y bordes) */
+    --neo-shadow: 0 0 12px var(--secondary-color), 0 0 20px var(--secondary-color);
 }
 
 html {
@@ -24,76 +24,78 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--primary-color);
+    background-image: var(--background-gradient); 
     color: var(--text-color);
-    overflow-x: hidden; /* Previene el scroll horizontal */
+    overflow-x: hidden;
+    min-height: 100vh; 
 }
 
-/* --- Pantalla de Introducción (Mantenido y funcional) --- */
+/* --- Pantalla de Introducción (Cubierta total) --- */
 .intro-screen {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100vh; /* OCUPA EL 100% DE LA ALTURA DE LA VENTANA */
     z-index: 100;
-    pointer-events: none;
-    display: flex;
+    pointer-events: none; 
+    display: flex; 
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    overflow: hidden;
+    overflow: hidden; 
+    transition: opacity 0.5s ease, filter 0.5s ease; /* Para el efecto de fade-out */
 }
 
+/* Overlay oscuro para mejorar contraste del logo */
 .intro-screen::after {
     content: '';
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.4);
+    /* Añadimos un tinte Cian sutil */
+    background: rgba(0, 188, 212, 0.05); 
+    /* Oscurecimiento en los bordes para más profundidad */
+    box-shadow: inset 0 0 100px rgba(5, 5, 10, 0.9); 
     z-index: 1;
 }
 
-.intro-screen img {
+/* IMAGEN DE FONDO (Con clase específica) */
+.intro-background-img {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Asegura que la imagen cubra toda la pantalla */
+    filter: brightness(0.7) contrast(1.1); 
+    z-index: 0;
 }
 
+/* Contenedor del Logo y Título */
 .intro-title {
     position: relative;
-    z-index: 2;
+    z-index: 2; /* Encima del overlay */
 }
 
-.intro-title h1 {
-    font-family: 'Orbitron', sans-serif;
-    color: var(--light-color);
-    font-size: 6.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    text-shadow: 
-        /* Extrusión 3D */
-        1px 1px 0 #2E7D32, 2px 2px 0 #2E7D32, 3px 3px 0 #2E7D32, 4px 4px 0 #2E7D32,
-        /* Sombra proyectada para dar más profundidad */
-        5px 5px 10px rgba(0,0,0,0.6),
-        /* Brillo (estado inicial de la animación) */
-        0 0 5px #fff,
-        0 0 10px #fff,
-        0 0 20px var(--secondary-color),
-        0 0 40px var(--secondary-color),
-        0 0 70px var(--secondary-color);
-    margin: 0;
-    /* Animación de entrada */
-    opacity: 0;
-    transform: translateY(30px);
-    animation: 
-        fadeInTitle 1.2s 0.5s forwards cubic-bezier(0.2, 0.8, 0.2, 1),
-        pulseGlow 4s infinite alternate 2s;
+/* ESTILO DEL LOGO TRANSPARENTE (Centrado y GRANDE) */
+.intro-logo {
+    height: auto; 
+    width: auto;
+    max-height: 90vh; /* ¡MÁXIMO TAMAÑO! (90% de la altura del viewport) */
+    max-width: 95vw;  /* ¡MÁXIMO TAMAÑO! (95% del ancho del viewport) */
+    display: block; 
+    margin: 0 auto; 
+    filter: drop-shadow(0 0 20px var(--secondary-color)); /* Efecto Neo-Cian */
+    transition: filter 0.3s ease;
 }
 
-/* --- Indicador de desplazamiento (flecha) (Mantenido y funcional) --- */
+.intro-logo:hover {
+    filter: drop-shadow(0 0 35px var(--accent-color)); /* Brillo más intenso al pasar el mouse */
+}
+
+
+/* --- Indicador de desplazamiento (scroll-indicator) --- */
 .sr-only {
     position: absolute !important;
     width: 1px;
@@ -111,7 +113,7 @@ body {
     bottom: 36px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 30;
+    z-index: 101; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -119,16 +121,17 @@ body {
     width: min(40vw, 220px);
     height: auto;
     pointer-events: none;
-    opacity: 0;
+    opacity: 0; /* INICIA OCULTO */
     transition: opacity 300ms ease;
 }
 
 .scroll-arrow {
     width: 100%;
     height: 20px;
-    color: var(--light-color);
+    color: var(--accent-color); /* Color Cian */
     opacity: 0;
     transform-origin: center;
+    filter: drop-shadow(0 0 8px var(--secondary-color)); /* Efecto Neo */
 }
 
 .scroll-arrow path {
@@ -141,382 +144,236 @@ body {
 .arrow-3 { animation: arrowFade 2s infinite 0.6s; }
 
 .scroll-indicator.active { opacity: 1; }
-.scroll-indicator.active .scroll-arrow { animation-play-state: running; }
 
-/* Animación para el efecto de desvanecimiento */
 @keyframes arrowFade {
     0% { opacity: 0; transform: translateY(-8px); }
     50% { opacity: 1; transform: translateY(0); }
     100% { opacity: 0; transform: translateY(8px); }
 }
 
-/* --- Contenido Principal (Mantenido) --- */
+/* --- Contenido Principal --- */
 main {
     position: relative;
     z-index: 1;
-    background-color: var(--primary-color);
-    padding-top: 100vh;
+    background-color: transparent; 
+    padding-top: 100vh; /* ¡CLAVE! Empuja el contenido para que empiece después de la intro */
 }
 
-/* --- Encabezado (Ajustado para Móviles) --- */
+/* Estilo del Encabezado Sticky (De vuelta a la línea simple solicitada) */
 .header {
-    background-color: rgba(33, 37, 41, 0.85);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--secondary-color);
+    background-color: var(--primary-color); 
+    height: 5px; 
+    padding: 0; 
+    
+    border-bottom: 2px solid var(--secondary-color); 
+    
     position: sticky;
     top: 0;
     z-index: 50;
     width: 100%;
     box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(0, 188, 212, 0.5); /* Aumentamos la sombra para Neo */
 }
 
-.header-buttons {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 10px 20px; /* Reducir padding para móvil */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.header-text h1 {
-    font-family: 'Orbitron', sans-serif;
-    margin: 0;
-    font-size: 2.5rem; /* Ajuste por defecto */
-    font-weight: 700;
-    color: var(--light-color);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 
-        1px 1px 0 #2E7D32,
-        2px 2px 4px rgba(0,0,0,0.5),
-        0 0 8px var(--secondary-color);
-    /* **ADICIÓN:** Asegura que el texto no se rompa */
-    white-space: nowrap; 
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-/* Botones del header */
-.header-btn {
-    width: 45px; /* Reducción de tamaño para que quepan */
-    height: 45px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    flex-shrink: 0; /* Impide que los botones se encojan */
-}
-
-.header-btn img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-/* Botón Regent Studios */
-.regent-btn img {
-    height: 45px; /* Ajustar el icono de Regent al nuevo tamaño del botón */
-    width: auto;
-    object-fit: contain;
-}
-
-/* Contenedor de botones derecha */
-.right-buttons {
-    display: flex;
-    gap: 10px; /* Reducir separación para móvil */
-    align-items: center;
-}
-
-/* --- Contenedor General (Mantenido) --- */
+/* --- Contenido de la Sección Principal --- */
 .container {
-    max-width: 1200px;
-    margin: 40px auto;
+    max-width: 1100px; 
+    margin: 60px auto;
     padding: 0 20px;
 }
 
-/* --- Sección del Equipo y Descripción (Mantenido) --- */
-.team-section {
+.main-content {
     text-align: center;
+}
+
+/* Contenedor Flex para Misión y Visión */
+.mission-vision-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px; 
+    margin-bottom: 40px;
+}
+
+.mission-vision-item {
+    flex: 1; 
+    text-align: center;
+    padding: 10px;
 }
 
 .section-title {
-    font-size: 2.8rem;
-    color: var(--accent-color);
-    margin-bottom: 20px;
+    font-size: 3rem; 
+    color: var(--accent-color); 
+    margin: 40px 0 20px 0;
+    font-family: 'Orbitron', sans-serif; 
+    text-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color); 
+    letter-spacing: 2px;
 }
 
 .project-description {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    max-width: 800px;
-    margin: 0 auto 50px auto;
+    font-size: 1.15rem; 
+    line-height: 1.8;
+    margin: 0 auto 40px auto;
+    opacity: 0.9;
 }
 
-/* --- Grid de Tarjetas del Equipo (Ajustado para Móviles) --- */
-.team-grid {
-    display: grid;
-    /* MÓVIL/DEFAULT: 1 columna, mínimo 260px (auto-fit se ajusta a 1) */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+.project-description strong {
+    color: var(--accent-color); 
+    font-weight: 600;
 }
 
-.card {
-    background-color: transparent;
-    height: 420px; /* Ligeramente más alto para mejor visualización de texto en móvil */
-    perspective: 1000px;
-    border-radius: 15px;
-    cursor: pointer;
-}
-/* ... resto de estilos de tarjeta mantenidos ... */
-
-.card-inner {
+/* Estilo Base de la Tarjeta */
+.project-card {
     position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    border-radius: 15px;
-    border: 2px solid var(--secondary-color);
-    box-shadow: 
-        0 15px 35px rgba(0, 0, 0, 0.5),
-        inset 0 0 10px rgba(76, 175, 80, 0.4);
+    background-color: var(--dark-color);
+    border: none; 
+    padding: 35px; 
+    border-radius: 8px; 
+    margin-top: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), var(--neo-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    overflow: hidden; 
 }
 
-.card-inner.is-flipped {
-    transform: rotateY(180deg);
+.project-card h3 {
+    color: var(--secondary-color); 
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.2rem; 
 }
 
-@media (hover: hover) and (pointer: fine) {
-    .card:not(:has(.card-inner.is-flipped)):hover .card-inner {
-        transform: rotateY(180deg);
-    }
+
+/* Estilo para la Tarjeta de Proyecto con Imagen de Fondo y fundido */
+.project-card-img {
+    background-image: url('instpecamIMG1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    z-index: 1;
+    color: var(--light-color);
+    text-shadow: 0 0 5px rgba(0,0,0,1);
 }
 
-.card-front, .card-back {
+/* Superposición de Oscurecimiento (Incluye el gradiente de fundido) */
+.project-card-img::before {
+    content: '';
     position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    /* GRADIENTE CLAVE: Oscurecimiento con fundido al fondo */
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.55) 0%, 
+        rgba(0, 0, 0, 0.65) 50%, 
+        var(--dark-color) 100% 
+    );
+    z-index: 2; 
+    transition: background 0.3s ease; 
+}
+
+/* Aseguramos que el contenido esté encima de la capa de oscurecimiento */
+.project-card-img h3, .project-card-img p, .card-cta-label {
+    position: relative;
+    z-index: 3;
+}
+
+.project-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), 0 0 25px var(--accent-color);
+}
+
+.project-card-img:hover::before {
+    /* Oscurecimiento menor al pasar el mouse */
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.45) 0%,
+        rgba(0, 0, 0, 0.55) 50%,
+        var(--dark-color) 100% 
+    );
+}
+
+/* Hacemos que el enlace cubra el 100% de la tarjeta */
+.card-link {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    box-sizing: border-box;
+    z-index: 4; 
 }
 
-.card-front {
-    background-color: var(--dark-color);
-    color: var(--light-color);
+/* Estilo del indicador visual del CTA */
+.card-cta-label {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: var(--accent-color);
+    color: var(--primary-color);
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgba(77, 208, 225, 0.8);
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.card-front img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid var(--secondary-color);
-    margin-bottom: 20px;
+.project-card-img:hover .card-cta-label {
+    background: var(--secondary-color);
+    box-shadow: 0 0 25px var(--secondary-color);
+    transform: scale(1.05);
 }
 
-.card-front h3 {
-    margin: 0;
-    font-size: 1.4rem;
-}
-
-.card-back {
-    background-color: var(--dark-color);
-    color: var(--light-color);
-    transform: rotateY(180deg);
-    padding: 30px;
-    /* Asegura que el texto pequeño se vea bien en móvil */
-    font-size: 0.95rem; 
-}
-
-.card-back h3 {
-    margin-top: 0;
-    color: var(--secondary-color);
-}
-
-.card-back p {
-    font-size: 1rem;
-    line-height: 1.5;
-}
-
-.card-back p strong {
-    color: var(--accent-color);
-}
-
-/* --- Estilos de Rango (Mantenido) --- */
-/* ... (Se mantienen todos los estilos de rango, ya que están bien definidos) ... */
-
-.rank-lead .card-front img { border-color: var(--rank-gold); box-shadow: 0 0 20px rgba(255, 215, 0, 0.7); }
-.rank-lead .card-back h3 { color: var(--rank-gold); text-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
-
-.rank-sublead .card-front img { border-color: var(--rank-blue-bright); box-shadow: 0 0 15px rgba(0, 191, 255, 0.7); }
-.rank-sublead .card-back h3 { color: var(--rank-blue-bright); text-shadow: 0 0 8px rgba(0, 191, 255, 0.6); }
-
-.rank-sublead-purple .card-front img { border-color: var(--rank-purple-bright); box-shadow: 0 0 15px rgba(191, 85, 236, 0.7); }
-.rank-sublead-purple .card-back h3 { color: var(--rank-purple-bright); text-shadow: 0 0 8px rgba(191, 85, 236, 0.6); }
-
-.rank-team-blue .card-front img { border-color: var(--rank-blue-normal); }
-.rank-team-blue .card-back h3 { color: var(--rank-blue-normal); }
-
-.rank-team-purple .card-front img { border-color: var(--rank-purple); }
-.rank-team-purple .card-back h3 { color: var(--rank-purple); }
-
-/* --- Pie de Página (Mantenido) --- */
+/* --- Pie de Página --- */
 .footer {
     background-color: var(--dark-color);
     color: var(--light-color);
     text-align: center;
-    padding: 20px;
+    padding: 25px; 
     margin-top: 50px;
-    border-top: 2px solid var(--secondary-color);
+    border-top: 2px solid var(--secondary-color); 
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
 }
 
 .footer-content p {
     margin: 5px 0;
+    opacity: 0.8;
 }
 
-/* --- Ajustes Específicos para Móviles (Max 600px) --- */
-@media (max-width: 600px) {
-    
-    /* 1. Header: Ajuste para que los botones y el título quepan en una línea */
-    .header-buttons {
-        padding: 10px 15px; /* Más estrecho */
-    }
-
-    .header-text h1 {
-        font-size: 1.5rem; /* Título más pequeño y legible */
-        letter-spacing: 1px;
+/* --- Media Queries --- */
+@media (max-width: 768px) {
+    /* Ajuste de tamaño del logo en móviles */
+    .intro-logo {
+        max-height: 70vh; /* Ajustado para móviles */
+        max-width: 95vw;
     }
     
-    .header-btn {
-        width: 35px; /* Botones más pequeños */
-        height: 35px;
+    /* Misión y Visión de vuelta a columnas apiladas en móviles */
+    .mission-vision-container {
+        flex-direction: column;
+        gap: 0;
     }
     
-    .regent-btn img {
-        height: 35px;
-    }
-
-    /* 2. Intro Title: Reducción drástica para móvil */
-    .intro-title h1 {
-        font-size: 2.5rem;
-        letter-spacing: 1px;
-        /* Simplificar el efecto 3D para rendimiento */
-        text-shadow: 
-            1px 1px 0 #2E7D32,
-            2px 2px 4px rgba(0,0,0,0.5),
-            0 0 8px var(--secondary-color);
-        animation: fadeInTitle 1.2s 0.5s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+    .header {
+        height: 4px;
     }
     
-    /* 3. Contenido y Grid */
-    .container {
-        padding: 0 15px;
-        margin: 20px auto;
-    }
-
-    .section-title {
-        font-size: 2rem;
+    .project-card h3 {
+        font-size: 1.8rem;
     }
     
-    .project-description {
-        font-size: 1rem;
-        margin-bottom: 30px;
-    }
-    
-    /* El team-grid ya se ajusta a 1 columna por defecto gracias a minmax(280px, 1fr) */
-    .card {
-        height: 380px; /* Ajuste para mantener proporción */
-    }
-    
-    .card-front img {
-        width: 120px;
-        height: 120px;
-        margin-bottom: 15px;
-    }
-    
-    .card-front h3 {
-        font-size: 1.2rem;
-    }
-    
-    .card-back p {
+    .card-cta-label {
+        padding: 8px 15px;
         font-size: 0.9rem;
     }
 
-    /* Indicador de scroll */
-    .scroll-indicator {
-        bottom: 25px;
-    }
-}
-
-
-/* --- Tabletas / Pantallas medianas (Ajuste para 2 columnas en grid) --- */
-@media (min-width: 601px) and (max-width: 1024px) {
-    .team-grid {
-        /* Fuerza 2 columnas en tabletas */
-        grid-template-columns: repeat(2, 1fr); 
-    }
-    .header-text h1 {
-        font-size: 2rem;
-    }
-}
-
-
-/* --- Escritorio (A partir de 1025px) --- */
-@media (min-width: 1025px) {
-    /* Optimización de 4 columnas en desktop */
-    .team-grid {
-        grid-template-columns: repeat(4, 1fr);
+    .section-title {
+        font-size: 2.5rem;
+        margin: 20px 0 10px 0;
     }
 
-    /* La tarjeta líder toma 2 columnas en la primera fila */
-    .rank-lead {
-        grid-column: span 2;
-        /* Para centrar la tarjeta grande */
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 500px;
-    }
-}
-
-
-/* --- Animaciones (Mantenidas) --- */
-@keyframes fadeInTitle {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes pulseGlow {
-    from {
-        text-shadow: 
-            1px 1px 0 #2E7D32, 2px 2px 0 #2E7D32, 3px 3px 0 #2E7D32, 4px 4px 0 #2E7D32, 5px 5px 10px rgba(0,0,0,0.6),
-            0 0 5px #fff,
-            0 0 10px #fff,
-            0 0 20px var(--secondary-color),
-            0 0 40px var(--secondary-color),
-            0 0 70px var(--secondary-color);
-    }
-    to {
-        text-shadow: 
-            1px 1px 0 #2E7D32, 2px 2px 0 #2E7D32, 3px 3px 0 #2E7D32, 4px 4px 0 #2E7D32, 5px 5px 10px rgba(0,0,0,0.6),
-            0 0 5px #fff,
-            0 0 10px #fff,
-            0 0 20px var(--accent-color),
-            0 0 40px var(--accent-color),
-            0 0 70px var(--accent-color);
+    .project-description {
+        font-size: 1rem;
     }
 }
