@@ -1,150 +1,167 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regent Studios | Creadores de Experiencias</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css"> 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regent Studios — Estudio Independiente</title>
+<meta name="description" content="Regent Studios: estudio independiente de Valledupar dedicado a simuladores 3D, videojuegos y experiencias interactivas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <div class="intro-screen">
-        <img src="LogoBanerF.png" alt="Fondo del Logobanner de Regent Studios" class="intro-background-img"> 
-        
-        <div class="intro-title">
-            <img src="LogoM-removebg-preview.png" alt="Regent Studios Logo" class="intro-logo">
-        </div>
+<script>(function(){
+  const savedTheme = localStorage.getItem('theme');
+  if(savedTheme === 'light'){
+    document.body.classList.add('light-mode');
+    localStorage.setItem('theme', 'light');
+  } else {
+    document.body.classList.remove('light-mode');
+    localStorage.setItem('theme', 'dark');
+  }
+})();</script>
 
-        <div class="scroll-indicator" aria-hidden="false">
-            <svg class="scroll-arrow arrow-1" viewBox="0 0 24 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Desliza hacia abajo">
-                <path d="M3 8l9 9 9-9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
-            </svg>
-            <svg class="scroll-arrow arrow-2" viewBox="0 0 24 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Desliza hacia abajo">
-                <path d="M3 8l9 9 9-9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
-            </svg>
-            <svg class="scroll-arrow arrow-3" viewBox="0 0 24 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Desliza hacia abajo">
-                <path d="M3 8l9 9 9-9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
-            </svg>
-            <span class="sr-only">Desliza hacia abajo</span>
-        </div>
+<!-- NAV FLOTANTE (se encoge al bajar, se expande al pasar el mouse) -->
+<div class="floating-menu-container minimized" id="mainNavContainer">
+  <nav class="floating-menu">
+    <a href="index.html" class="menu-brand">
+      <img src="IMGs/LogoM.png" alt="Regent Studios" class="menu-brand-logo">
+    </a>
+    <span class="menu-divider"></span>
+    <a href="index.html" class="menu-item active" data-label="Inicio"><i class="fa-solid fa-house"></i></a>
+    <a href="equipo.html" class="menu-item" data-label="Equipo"><i class="fa-solid fa-user-group"></i></a>
+    <a href="proyectos.html" class="menu-item" data-label="Proyectos"><i class="fa-solid fa-code"></i></a>
+    <button class="menu-item" id="themeToggle" data-label="Tema"><i class="fa-solid fa-circle-half-stroke"></i></button>
+  </nav>
+</div>
+
+<!-- INTRO: imagen de fondo que se desvanece y hace blur al bajar el scroll -->
+<div class="intro-screen" id="introScreen">
+  <img src="IMGs/LogoBanerF.png" alt="Regent Studios" class="intro-background-img" id="introBg">
+  <div class="intro-title">
+    <span class="intro-eyebrow">Estudio independiente · Valledupar</span>
+    <img src="IMGs/LogoM2.png" alt="Regent Studios" class="hero-logo">
+  </div>
+  <p class="hero-tagline"><i class="fa-solid fa-circle" style="font-size:0.4rem; margin-right:8px; vertical-align:middle;"></i>Creadores de Experiencias Digitales</p>
+  <div class="scroll-indicator" id="scrollIndicator" aria-hidden="true">
+    <svg class="scroll-arrow arrow-1" viewBox="0 0 24 24"><path d="M3 8l9 9 9-9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+    <svg class="scroll-arrow arrow-2" viewBox="0 0 24 24"><path d="M3 8l9 9 9-9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+    <svg class="scroll-arrow arrow-3" viewBox="0 0 24 24"><path d="M3 8l9 9 9-9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+    <span class="sr-only">Desliza hacia abajo</span>
+  </div>
+</div>
+
+<main style="padding-top:100vh;">
+  <div class="sticky-line"></div>
+  <div class="container" style="padding-top:60px;">
+
+    <div class="spec-sheet reveal">
+      <div class="spec-cell"><span class="spec-num">01</span><span class="spec-lbl">Proyecto en vivo</span></div>
+      <div class="spec-cell"><span class="spec-num">04</span><span class="spec-lbl">Creadores</span></div>
+      <div class="spec-cell"><span class="spec-num">04</span><span class="spec-lbl">Disciplinas</span></div>
+      <div class="spec-cell"><span class="spec-num">2025</span><span class="spec-lbl">Fundación</span></div>
     </div>
 
-    <main>
-        <header class="header"></header>
+    <div class="dim-line reveal"><span class="seg"></span><span class="lbl">Misión &amp; Visión</span><span class="seg"></span></div>
 
-        <div class="container">
-            <div class="main-content">
-                
-                <div class="mission-vision-container">
-                    
-                    <div class="mission-vision-item">
-                        <h2 class="section-title">Nuestra Misión</h2>
-                        <p class="project-description">
-                            Somos <strong>Regent Studios</strong>, creadores de experiencias interactivas y visuales. Estudio independiente enfocado en animaciones, cortometrajes y videojuegos. Fusionamos <strong>arte, tecnología y narrativa</strong> para dar vida a ideas únicas.
-                        </p>
-                    </div>
+    <div class="panel-grid reveal">
+      <div class="panel-cell">
+        <span class="eyebrow">Misión</span>
+        <p>Construir <strong>experiencias digitales e interactivas</strong> con el mismo rigor técnico que exige un plano de ingeniería: cada proyecto parte de una estructura clara antes de volverse producto terminado.</p>
+      </div>
+      <div class="panel-cell">
+        <span class="eyebrow">Visión</span>
+        <p>Ser un estudio de referencia en <strong>Valledupar y la región Caribe</strong>, conocido por tratar el desarrollo de videojuegos y simuladores con la misma precisión que un taller de oficios técnicos.</p>
+      </div>
+    </div>
 
-                    <div class="mission-vision-item">
-                        <h2 class="section-title">Nuestra Visión</h2>
-                        <p class="project-description">
-                            Ser el estudio de desarrollo independiente líder en Latinoamérica, reconocido por su innovación en la inmersión digital y por establecer nuevos estándares en el entretenimiento educativo y el storytelling interactivo.
-                        </p>
-                    </div>
+    <div class="dim-line reveal"><span class="seg"></span><span class="lbl">El equipo</span><span class="seg"></span></div>
 
-                </div>
-                
-                <h2 class="section-title">Proyectos Destacados</h2>
-                
-                <div class="project-card project-card-img"> 
-                    <h3>INSTPECAM 3D</h3>
-                    <p>Simulador inmersivo del Instituto Técnico Industrial "Pedro Castro Monsalvo", utilizando Blender, Sketchup y Unity. Un proyecto de grado que construye una réplica digital fiel y detallada.</p>
-                    
-                    <a href="https://regentstudios.github.io/Proyecto-Instpecam3D/" class="card-link" aria-label="Ir al Proyecto Instpecam 3D"></a>
-                    <span class="card-cta-label">Ver Proyecto</span>
-                </div>
-            </div>
-        </div>
-    </main>
+    <div class="team-cta reveal">
+      <div class="team-cta-text">
+        <span class="eyebrow">Cuatro creadores</span>
+        <h2 class="title-md" style="margin-bottom:14px;">Detrás de cada línea de código, cada tablero eléctrico y cada trazo, hay una persona.</h2>
+        <p class="lede">Conoce la formación técnica y las herramientas de cada miembro del estudio.</p>
+      </div>
+      <a href="equipo.html" class="btn">Ver perfiles <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <div class="dim-line reveal"><span class="seg"></span><span class="lbl">Proyecto destacado</span><span class="seg"></span></div>
+
+    <a href="https://regentstudios.github.io/Proyecto-Instpecam3D/" target="_blank" class="proj-card proj-card-img reveal" style="--bg-image:url('IMGs/instpecamIMG1.jpg');">
+      <div class="proj-card-body">
+        <span class="status-tag status-live"><span class="dot"></span> En vivo</span>
+        <span class="proj-tag">Proyecto de grado · 2025</span>
+        <h3>INSTPECAM 3D</h3>
+        <p>Simulador inmersivo y navegable del Instituto Técnico Industrial Pedro Castro Monsalvo, modelado en Blender y SketchUp y ensamblado en Unity.</p>
+        <span class="proj-cta"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver proyecto</span>
+      </div>
+    </a>
+
+    <div style="text-align:center; margin:60px 0 100px;" class="reveal">
+      <a href="proyectos.html" class="btn btn-ghost">Explorar todos los proyectos <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+  </div>
+</main>
 
 <footer class="footer">
-        <div class="footer-content">
-            <p><strong>Regent Studios</strong> | Innovación y Creatividad</p>
-            <p>© 2025 Regent Studios | Todos los derechos reservados</p>
-            <p>Email: <a href="mailto:RegentStudiosXD@gmail.com" style="color: var(--accent-color); text-decoration: none;">RegentStudiosXD@gmail.com</a></p>
-            <p>Teléfono: <a href="https://wa.me/573246735826" target="_blank" style="color: var(--accent-color); text-decoration: none;">+57 324 673 5826</a></p>
-        </div>
-    </footer>
-    
-    <script>
-        // Efecto de fade-out de la intro al hacer scroll
-        const introScreen = document.querySelector('.intro-screen');
-        const scrollThreshold = window.innerHeight;
+  <p><strong>Regent Studios</strong> — Valledupar, Colombia</p>
+  <p>© 2026 Regent Studios · Todos los derechos reservados</p>
+  <p>Email: <a href="mailto:RegentStudiosXD@gmail.com">RegentStudiosXD@gmail.com</a> · <a href="https://wa.me/573246735826" target="_blank">+57 324 673 5826</a></p>
+</footer>
 
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            
-            if (scrollY <= scrollThreshold) {
-                const opacity = 1 - (scrollY / scrollThreshold);
-                const blur = (scrollY / scrollThreshold) * 10;
-                introScreen.style.opacity = opacity;
-                introScreen.style.filter = `blur(${blur}px)`;
-            } else {
-                introScreen.style.opacity = 0;
-                introScreen.style.filter = `blur(10px)`;
-            }
-        }, { passive: true });
+<script>
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+  });
 
-        // Activar indicador de scroll si el usuario permanece en la intro sin desplazarse
-        (function() {
-            const indicator = document.querySelector('.scroll-indicator');
-            if (!indicator) return;
+  // === Intro: fade + blur del fondo al hacer scroll ===
+  const intro = document.getElementById('introScreen');
+  const introBg = document.getElementById('introBg');
+  const threshold = window.innerHeight;
 
-            let idleTimer = null;
-            const idleDelay = 2500; // 2.5 segundos de inactividad
-            const isInIntro = () => window.scrollY <= window.innerHeight * 0.15;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y <= threshold) {
+      const r = y / threshold;
+      intro.style.opacity = 1 - r;
+      intro.style.filter = `blur(${r * 10}px)`;
+      if (introBg) introBg.style.transform = `scale(${1.05 + r * 0.06}) translateY(${r * 44}px)`;
+    } else {
+      intro.style.opacity = 0;
+    }
+  }, { passive: true });
 
-            function startIdle() {
-                clearTimeout(idleTimer);
-                idleTimer = setTimeout(() => {
-                    indicator.classList.add('active');
-                }, idleDelay);
-            }
+  // === Nav flotante: se encoge al bajar, se expande al pasar el mouse ===
+  const navContainer = document.getElementById('mainNavContainer');
+  window.addEventListener('scroll', () => {
+    navContainer.classList.toggle('minimized', window.scrollY > 80);
+  }, { passive: true });
+  navContainer.addEventListener('mouseenter', () => navContainer.classList.remove('minimized'));
+  navContainer.addEventListener('mouseleave', () => {
+    if (window.scrollY > 80) navContainer.classList.add('minimized');
+  });
 
-            function cancelIdle() {
-                clearTimeout(idleTimer);
-                indicator.classList.remove('active');
-            }
+  // === Indicador de scroll en el intro ===
+  (function() {
+    const ind = document.getElementById('scrollIndicator');
+    if (!ind) return;
+    let timer;
+    const inIntro = () => window.scrollY <= window.innerHeight * 0.14;
+    const show = () => { clearTimeout(timer); timer = setTimeout(() => { if (inIntro()) ind.classList.add('active'); }, 2200); };
+    const hide = () => { clearTimeout(timer); ind.classList.remove('active'); };
+    window.addEventListener('load', () => { if (inIntro()) show(); });
+    window.addEventListener('scroll', () => { inIntro() ? (hide(), show()) : hide(); }, { passive: true });
+  })();
 
-            function handleScroll() {
-                if (isInIntro()) {
-                    cancelIdle();
-                    startIdle();
-                } else {
-                    cancelIdle();
-                }
-            }
-
-            window.addEventListener('load', () => {
-                if (isInIntro()) startIdle();
-            });
-
-            window.addEventListener('scroll', handleScroll, { passive: true });
-            document.addEventListener('visibilitychange', () => {
-                if (document.visibilityState === 'visible' && isInIntro()) startIdle();
-                else cancelIdle();
-            });
-
-            ['keydown','pointerdown','touchstart'].forEach(ev => {
-                window.addEventListener(ev, () => {
-                    cancelIdle();
-                }, { passive: true });
-            });
-        })();
-    </script>
-
+  // === Reveal al hacer scroll ===
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>
-

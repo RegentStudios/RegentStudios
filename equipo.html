@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equipo | Regent Studios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script>(function(){
+  const savedTheme = localStorage.getItem('theme');
+  if(savedTheme === 'light'){
+    document.body.classList.add('light-mode');
+    localStorage.setItem('theme', 'light');
+  } else {
+    document.body.classList.remove('light-mode');
+    localStorage.setItem('theme', 'dark');
+  }
+})();</script>
+
+<div class="floating-menu-container" id="mainNavContainer">
+  <nav class="floating-menu">
+    <a href="index.html" class="menu-brand">
+      <span class="menu-brand-mark"></span>
+      <span class="menu-brand-word">Regent <span>Studios</span></span>
+    </a>
+    <span class="menu-divider"></span>
+    <a href="index.html" class="menu-item" data-label="Inicio"><i class="fa-solid fa-house"></i></a>
+    <a href="equipo.html" class="menu-item active" data-label="Equipo"><i class="fa-solid fa-user-group"></i></a>
+    <a href="proyectos.html" class="menu-item" data-label="Proyectos"><i class="fa-solid fa-code"></i></a>
+    <button class="menu-item" id="themeToggle" data-label="Tema"><i class="fa-solid fa-circle-half-stroke"></i></button>
+  </nav>
+</div>
+
+<main class="page-content">
+  <div class="container">
+
+    <span class="eyebrow reveal">Regent Studios · 2026</span>
+    <h1 class="title-lg reveal" style="margin-bottom:16px;">Sobre el estudio</h1>
+    <p class="lede reveal" style="margin-bottom:52px; max-width:680px;">Un equipo joven de Valledupar que combina código, diseño, ebanistería y electricidad. Cuatro oficios distintos que comparten un mismo método: planear antes de construir.</p>
+
+    <div class="panel-grid reveal">
+      <div class="panel-cell">
+        <span class="eyebrow">Nuestra historia</span>
+        <p>Regent Studios nace de la pasión compartida por la creación digital. Somos un estudio independiente que explora nuevas fronteras en el desarrollo interactivo, priorizando <strong>calidad técnica</strong> sobre cada proyecto que tomamos.</p>
+      </div>
+      <div class="panel-cell">
+        <span class="eyebrow">Cómo trabajamos</span>
+        <p>Combinamos disciplinas distintas —programación, diseño gráfico, ebanistería y sistemas eléctricos— porque las mejores ideas nacen del cruce entre oficios que normalmente no se cruzan.</p>
+      </div>
+    </div>
+
+    <div class="dim-line reveal"><span class="seg"></span><span class="lbl">04 Creadores</span><span class="seg"></span></div>
+
+    <div class="team-grid">
+
+      <button class="member-card reveal" data-member="jesus">
+        <div class="member-top">
+          <div class="member-avatar"><i class="fa-solid fa-code"></i></div>
+          <div>
+            <span class="member-role">Desarrollador · Informática</span>
+            <h3 class="member-name">Jesus Giraldo</h3>
+          </div>
+        </div>
+        <p class="member-bio">Programador dedicado al desarrollo de videojuegos y sistemas interactivos. Estudia Ingeniería Telemática en Barranquilla.</p>
+        <div class="member-tags"><span>Unity</span><span>C#</span><span>Python</span><span>Blender</span></div>
+        <span class="member-open"><i class="fa-solid fa-arrow-right"></i></span>
+      </button>
+
+      <button class="member-card reveal" data-member="andreina">
+        <div class="member-top">
+          <div class="member-avatar"><i class="fa-solid fa-drafting-compass"></i></div>
+          <div>
+            <span class="member-role">Diseño &amp; Fabricación</span>
+            <h3 class="member-name">Andreina Gutierrez</h3>
+          </div>
+        </div>
+        <p class="member-bio">Especialista en diseño modular y fabricación de muebles contemporáneos, con visión artística propia.</p>
+        <div class="member-tags"><span>Adobe Creative</span><span>Ebanistería</span><span>AutoCAD</span></div>
+        <span class="member-open"><i class="fa-solid fa-arrow-right"></i></span>
+      </button>
+
+      <button class="member-card reveal" data-member="charris">
+        <div class="member-top">
+          <div class="member-avatar"><i class="fa-solid fa-bolt"></i></div>
+          <div>
+            <span class="member-role">Técnico Electricista</span>
+            <h3 class="member-name">Santiago Charris</h3>
+          </div>
+        </div>
+        <p class="member-bio">Experto en sistemas eléctricos industriales y residenciales, y en automatización bajo normativa RETIE.</p>
+        <div class="member-tags"><span>Circuitos AC/DC</span><span>RETIE</span><span>Automatización</span></div>
+        <span class="member-open"><i class="fa-solid fa-arrow-right"></i></span>
+      </button>
+
+      <button class="member-card reveal" data-member="maria">
+        <div class="member-top">
+          <div class="member-avatar"><i class="fa-solid fa-palette"></i></div>
+          <div>
+            <span class="member-role">Diseñadora Gráfica</span>
+            <h3 class="member-name">Maria Jose Nuñez</h3>
+          </div>
+        </div>
+        <p class="member-bio">Encargada de la identidad visual del estudio: paletas, tipografía y piezas de comunicación de cada proyecto.</p>
+        <div class="member-tags"><span>Illustrator</span><span>Photoshop</span><span>Identidad visual</span></div>
+        <span class="member-open"><i class="fa-solid fa-arrow-right"></i></span>
+      </button>
+
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <p><strong>Regent Studios</strong> — Valledupar, Colombia</p>
+  <p>© 2026 Regent Studios · Todos los derechos reservados</p>
+</footer>
+
+<!-- Panel de perfil -->
+<div class="overlay" id="profileOverlay">
+  <button class="overlay-close" id="overlayClose" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+  <div class="overlay-panel" id="overlayPanel"></div>
+</div>
+
+<script>
+  const TEAM = {
+    jesus: {
+      icon: 'fa-code',
+      role: 'Desarrollador · Informática',
+      name: 'Jesus Giraldo',
+      loc: '📍 Colombia',
+      bio: 'Programador dedicado al desarrollo de videojuegos y sistemas interactivos. Actualmente estudia Ingeniería Telemática en la IUB, en Soledad, siempre aprendiendo para crear experiencias digitales más impactantes.',
+      edu: [
+        { year:'2023 — Graduado', title:'Bachiller Técnico Industrial', place:'INSTPECAM · Valledupar' },
+        { year:'2025 — Graduado', title:'Técnico Informático', place:'INSTPECAM · Valledupar' },
+        { year:'2025 — Titulado', title:'Técnico en Telecomunicaciones', place:'SENA' },
+        { year:'2026 — En curso', title:'Ingeniería Telemática', place:'IUB · Barranquilla' },
+      ],
+      skills: ['Unity','C#','Python','Modelado 3D','Redes','Blender'],
+      social: [
+        { icon:'fa-brands fa-instagram', label:'@jesusgiraldor', url:'https://www.instagram.com/jesusgiraldor/' },
+        { icon:'fa-brands fa-tiktok', label:'@jesusandresgirald', url:'https://www.tiktok.com/@jesusandresgirald' },
+      ],
+      project: { tag:'Proyecto destacado · 2025', title:'INSTPECAM 3D', desc:'Recreación digital interactiva del campus del Instituto Técnico Industrial Pedro Castro Monsalvo, construida en Unity con modelado en Blender.', url:'https://regentstudios.github.io/Proyecto-Instpecam3D/', cta:'Ver proyecto' }
+    },
+    andreina: {
+      icon: 'fa-drafting-compass',
+      role: 'Diseño & Fabricación',
+      name: 'Andreina Gutierrez',
+      loc: '📍 Colombia',
+      bio: 'Especialista en diseño modular y fabricación de muebles contemporáneos. Actualmente sigue formando su perfil profesional desde Valledupar, aportando carácter visual y técnico a cada proyecto del estudio.',
+      edu: [
+        { year:'2023 — Graduada', title:'Bachiller Técnico Industrial', place:'INSTPECAM · Valledupar' },
+        { year:'2025 — Graduada', title:'Técnico en Ebanistería', place:'INSTPECAM · Valledupar' },
+        { year:'SENA', title:'Téc. Fabricación de Muebles Modulares', place:'Muebles Contemporáneos' },
+        { year:'SENA — Curso', title:'Fundamentos de Diseño', place:'Complementaria Profesional' },
+      ],
+      skills: ['Adobe Creative','Diseño Modular','Ebanistería','Carpintería Fina','AutoCAD'],
+      social: [
+        { icon:'fa-brands fa-instagram', label:'Instagram', url:'#' },
+        { icon:'fa-brands fa-tiktok', label:'TikTok', url:'#' },
+      ],
+      project: null
+    },
+    charris: {
+      icon: 'fa-bolt',
+      role: 'Técnico Electricista',
+      name: 'Santiago Charris',
+      loc: '📍 Colombia',
+      bio: 'Experto en sistemas eléctricos industriales y residenciales. Actualmente desarrolla su formación y trabajo desde Valledupar, con especialización en diseño de tableros de control y automatización bajo normativa RETIE.',
+      edu: [
+        { year:'2023 — Graduado', title:'Bachiller Técnico Industrial', place:'INSTPECAM · Valledupar' },
+        { year:'2025 — Graduado', title:'Técnico del SENA', place:'INSTPECAM · Valledupar' },
+        { year:'SENA — Especialidad', title:'Seguridad Eléctrica (RETIE)', place:'Normatividad vigente' },
+      ],
+      skills: ['Circuitos AC/DC','Planos Eléctricos','Automatización','Tableros de Control','RETIE'],
+      social: [
+        { icon:'fa-brands fa-instagram', label:'Instagram', url:'https://www.instagram.com/' },
+        { icon:'fa-brands fa-tiktok', label:'TikTok', url:'https://www.tiktok.com/' },
+      ],
+      project: null
+    },
+    maria: {
+      icon: 'fa-palette',
+      role: 'Diseñadora Gráfica',
+      name: 'Maria Jose Nuñez',
+      loc: '📍 Colombia',
+      bio: 'Diseñadora gráfica encargada de la identidad visual de Regent Studios: paletas de color, tipografía y piezas de comunicación para cada proyecto. Actualmente estudia Diseño Gráfico en la IUB, en Barranquilla.',
+      edu: [
+        { year:'2026 — En curso', title:'Diseño Gráfico', place:'IUB · Barranquilla' },
+      ],
+      skills: ['Illustrator','Photoshop','Identidad visual','Composición'],
+      social: [
+        { icon:'fa-brands fa-instagram', label:'Instagram', url:'#' },
+        { icon:'fa-brands fa-tiktok', label:'TikTok', url:'#' },
+      ],
+      project: null
+    }
+  };
+
+  function renderProfile(id){
+    const m = TEAM[id];
+    if(!m) return;
+    const panel = document.getElementById('overlayPanel');
+    const eduHTML = m.edu.map(e => `
+      <div class="op-edu-item">
+        <span class="op-edu-year">${e.year}</span>
+        <strong class="op-edu-title">${e.title}</strong>
+        <span class="op-edu-place">${e.place}</span>
+      </div>`).join('');
+    const skillsHTML = m.skills.map(s => `<span>${s}</span>`).join('');
+    const socialHTML = m.social.map(s => `<a href="${s.url}" target="_blank"><i class="${s.icon}"></i> ${s.label}</a>`).join('');
+    const projectBlock = m.project ? `
+      <span class="op-block-title" style="margin-top:24px; display:block;">${m.project.tag}</span>
+      <h3 style="font-family:var(--font-display); font-size:1.15rem; margin-bottom:8px;">${m.project.title}</h3>
+      <p style="color:var(--dim); font-size:0.9rem; line-height:1.75; margin-bottom:6px;">${m.project.desc}</p>
+      ${m.project.url
+        ? `<a href="${m.project.url}" target="_blank" class="btn" style="margin-top:6px;">${m.project.cta} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>`
+        : `<span class="proj-cta" style="color:var(--muted); margin-top:6px; display:inline-flex;"><i class="fa-solid fa-clock"></i> ${m.project.cta}</span>`}
+    ` : '';
+
+    panel.innerHTML = `
+      <div class="cv-page">
+        <div class="cv-header">
+          <div class="cv-heading">
+            <div class="op-avatar"><i class="fa-solid ${m.icon}"></i></div>
+            <div>
+              <span class="op-role">${m.role}</span>
+              <h2 class="op-name">${m.name}</h2>
+              <p class="op-loc">${m.loc}</p>
+              <p class="op-bio">${m.bio}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv-grid">
+          <section class="cv-card">
+            <span class="op-block-title">Formación</span>
+            <div class="op-edu">${eduHTML}</div>
+          </section>
+
+          <section class="cv-card">
+            <span class="op-block-title">Habilidades</span>
+            <div class="op-skills">${skillsHTML}</div>
+            <span class="op-block-title" style="margin-top:24px;">Redes</span>
+            <div class="op-social">${socialHTML}</div>
+          </section>
+        </div>
+
+        ${projectBlock}
+      </div>
+    `;
+  }
+
+  const overlay = document.getElementById('profileOverlay');
+  function openProfile(id){
+    renderProfile(id);
+    overlay.classList.add('open');
+    history.replaceState(null, '', '#' + id);
+  }
+  function closeProfile(){
+    overlay.classList.remove('open');
+    history.replaceState(null, '', location.pathname);
+  }
+  document.querySelectorAll('[data-member]').forEach(btn => {
+    btn.addEventListener('click', () => openProfile(btn.dataset.member));
+  });
+  document.getElementById('overlayClose').addEventListener('click', closeProfile);
+  overlay.addEventListener('click', e => { if(e.target === overlay) closeProfile(); });
+  window.addEventListener('load', () => {
+    const hash = location.hash.replace('#','');
+    if (hash && TEAM[hash]) openProfile(hash);
+  });
+
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+  });
+
+  // === Nav flotante: se encoge al bajar, se expande al pasar el mouse ===
+  const navContainer = document.getElementById('mainNavContainer');
+  window.addEventListener('scroll', () => {
+    navContainer.classList.toggle('minimized', window.scrollY > 80);
+  }, { passive: true });
+  navContainer.addEventListener('mouseenter', () => navContainer.classList.remove('minimized'));
+  navContainer.addEventListener('mouseleave', () => {
+    if (window.scrollY > 80) navContainer.classList.add('minimized');
+  });
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
