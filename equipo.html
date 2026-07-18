@@ -24,8 +24,7 @@
 <div class="floating-menu-container" id="mainNavContainer">
   <nav class="floating-menu">
     <a href="index.html" class="menu-brand">
-      <span class="menu-brand-mark"></span>
-      <span class="menu-brand-word">Regent <span>Studios</span></span>
+      <img src="LogoM.png" alt="Regent Studios" class="menu-brand-logo">
     </a>
     <span class="menu-divider"></span>
     <a href="index.html" class="menu-item" data-label="Inicio"><i class="fa-solid fa-house"></i></a>
@@ -133,6 +132,8 @@
       name: 'Jesus Giraldo',
       loc: '📍 Colombia',
       bio: 'Programador dedicado al desarrollo de videojuegos y sistemas interactivos. Actualmente estudia Ingeniería Telemática en la IUB, en Soledad, siempre aprendiendo para crear experiencias digitales más impactantes.',
+      context: 'Desarrollador con enfoque en experiencias interactivas y soluciones digitales que combinan programación, diseño y una visión más cercana a la ingeniería.',
+      highlights: ['Interés por videojuegos, simuladores y prototipos funcionales','Enfoque técnico con estructura y claridad en cada proyecto','Combina formación académica con trabajo práctico y creativo'],
       edu: [
         { year:'2023 — Graduado', title:'Bachiller Técnico Industrial', place:'INSTPECAM · Valledupar' },
         { year:'2025 — Graduado', title:'Técnico Informático', place:'INSTPECAM · Valledupar' },
@@ -152,6 +153,8 @@
       name: 'Andreina Gutierrez',
       loc: '📍 Colombia',
       bio: 'Especialista en diseño modular y fabricación de muebles contemporáneos. Actualmente sigue formando su perfil profesional desde Valledupar, aportando carácter visual y técnico a cada proyecto del estudio.',
+      context: 'Profesional del diseño y la fabricación que aporta sensibilidad estética, detalle constructivo y una mirada integral a las propuestas del estudio.',
+      highlights: ['Especialista en diseño modular y piezas funcionales','Aporta criterio visual y rigor técnico','Conecta creatividad con procesos de elaboración reales'],
       edu: [
         { year:'2023 — Graduada', title:'Bachiller Técnico Industrial', place:'INSTPECAM · Valledupar' },
         { year:'2025 — Graduada', title:'Técnico en Ebanistería', place:'INSTPECAM · Valledupar' },
@@ -171,6 +174,8 @@
       name: 'Santiago Charris',
       loc: '📍 Colombia',
       bio: 'Experto en sistemas eléctricos industriales y residenciales. Actualmente desarrolla su formación y trabajo desde Valledupar, con especialización en diseño de tableros de control y automatización bajo normativa RETIE.',
+      context: 'Técnico especializado en electricidad y automatización, con formación orientada a soluciones seguras, ordenadas y funcionales.',
+      highlights: ['Experiencia en sistemas eléctricos industriales y residenciales','Especialización en seguridad y normativa RETIE','Aporta enfoque práctico para convertir ideas en sistemas operativos'],
       edu: [
         { year:'2023 — Graduado', title:'Bachiller Técnico Industrial', place:'INSTPECAM · Valledupar' },
         { year:'2025 — Graduado', title:'Técnico del SENA', place:'INSTPECAM · Valledupar' },
@@ -189,6 +194,8 @@
       name: 'Maria Jose Nuñez',
       loc: '📍 Colombia',
       bio: 'Diseñadora gráfica encargada de la identidad visual de Regent Studios: paletas de color, tipografía y piezas de comunicación para cada proyecto. Actualmente estudia Diseño Gráfico en la IUB, en Barranquilla.',
+      context: 'Diseñadora gráfica enfocada en identidad visual, comunicación y piezas que hacen que cada presentación y proyecto luzcan más profesionales.',
+      highlights: ['Especialista en identidad visual y piezas de comunicación','Criterio editorial y de composición muy marcado','Aporta claridad visual y fuerza estética a cada propuesta'],
       edu: [
         { year:'2026 — En curso', title:'Diseño Gráfico', place:'IUB · Barranquilla' },
       ],
@@ -213,6 +220,14 @@
       </div>`).join('');
     const skillsHTML = m.skills.map(s => `<span>${s}</span>`).join('');
     const socialHTML = m.social.map(s => `<a href="${s.url}" target="_blank"><i class="${s.icon}"></i> ${s.label}</a>`).join('');
+    const highlightsHTML = m.highlights ? `<ul class="op-highlights">${m.highlights.map(h => `<li>${h}</li>`).join('')}</ul>` : '';
+    const contextBlock = m.context ? `
+      <div class="op-context">
+        <h3>Contexto profesional</h3>
+        <p>${m.context}</p>
+        ${highlightsHTML}
+      </div>
+    ` : '';
     const projectBlock = m.project ? `
       <span class="op-block-title" style="margin-top:24px; display:block;">${m.project.tag}</span>
       <h3 style="font-family:var(--font-display); font-size:1.15rem; margin-bottom:8px;">${m.project.title}</h3>
@@ -226,12 +241,15 @@
       <div class="cv-page">
         <div class="cv-header">
           <div class="cv-heading">
-            <div class="op-avatar"><i class="fa-solid ${m.icon}"></i></div>
-            <div>
+            <div class="op-avatar-card">
+              <div class="op-avatar"><i class="fa-solid ${m.icon}"></i></div>
+            </div>
+            <div class="op-identity">
               <span class="op-role">${m.role}</span>
               <h2 class="op-name">${m.name}</h2>
               <p class="op-loc">${m.loc}</p>
               <p class="op-bio">${m.bio}</p>
+              ${contextBlock}
             </div>
           </div>
         </div>
